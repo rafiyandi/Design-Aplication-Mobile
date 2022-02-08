@@ -14,6 +14,28 @@ class _PricingState extends State<Pricing> {
 
   @override
   Widget build(BuildContext context) {
+    Widget header() {
+      return Container(
+        margin: EdgeInsets.only(top: 50),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset(
+              "assets/crown.png",
+              width: 100,
+            ),
+            SizedBox(
+              height: 48,
+            ),
+            Text(
+              "Which one you wish\nto Upgrade?",
+              style: GoogleFonts.poppins(fontSize: 22, fontWeight: semiBold),
+            )
+          ],
+        ),
+      );
+    }
+
     Widget option(int index, imageUrl, title, subtitle, nilai) {
       return InkWell(
         onTap: () {
@@ -86,20 +108,28 @@ class _PricingState extends State<Pricing> {
     }
 
     return Scaffold(
-      body: Container(
-        margin: EdgeInsets.symmetric(horizontal: 30, vertical: 100),
-        child: Column(
-          children: [
-            option(
-                0, "assets/pig_icon.png", "Money Security", "support ", "24/7"),
-            SizedBox(height: 24),
-            option(
-                1, "assets/pig_icon.png", "Money Security", "support ", "24/7"),
-            SizedBox(height: 24),
-            option(
-                2, "assets/pig_icon.png", "Money Security", "support ", "24/7"),
-          ],
-        ),
+      body: ListView(
+        children: [
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 30, vertical: 100),
+            child: Column(
+              children: [
+                header(),
+                SizedBox(
+                  height: 30,
+                ),
+                option(0, "assets/pig_icon.png", "Money Security", "support ",
+                    "24/7"),
+                SizedBox(height: 24),
+                option(1, "assets/pig_icon.png", "Money Security", "support ",
+                    "24/7"),
+                SizedBox(height: 24),
+                option(2, "assets/pig_icon.png", "Money Security", "support ",
+                    "24/7"),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
