@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:seven_day/page/get_started.dart';
 import 'package:seven_day/page/pricing.dart';
+import 'package:seven_day/page/random_screen.dart';
 import 'package:seven_day/page/second_get_started.dart';
 import 'package:seven_day/page/second_sign_in_page.dart';
 import 'package:seven_day/page/second_splash_screen.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
     ));
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Pricing(),
+      home: RandomScreen(),
     );
   }
 }
