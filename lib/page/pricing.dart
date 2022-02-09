@@ -16,7 +16,7 @@ class _PricingState extends State<Pricing> {
   Widget build(BuildContext context) {
     Widget header() {
       return Container(
-        margin: EdgeInsets.only(top: 50),
+        margin: EdgeInsets.only(top: 70),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -107,11 +107,45 @@ class _PricingState extends State<Pricing> {
       );
     }
 
+    Widget button() {
+      return Container(
+        height: 70,
+        width: double.infinity,
+        child: TextButton(
+            onPressed: () {},
+            style: TextButton.styleFrom(
+              backgroundColor: Color(0xff6050E7),
+            ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Upgrade Now",
+                    style: GoogleFonts.poppins(
+                      fontSize: 18,
+                      fontWeight: semiBold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Image.asset(
+                    "assets/right_arrow.png",
+                    width: 24,
+                  )
+                ],
+              ),
+            )),
+      );
+    }
+
     return Scaffold(
-      body: ListView(
+      body: Column(
         children: [
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 30, vertical: 100),
+            margin: EdgeInsets.symmetric(
+              horizontal: 30,
+            ),
             child: Column(
               children: [
                 header(),
@@ -129,6 +163,8 @@ class _PricingState extends State<Pricing> {
               ],
             ),
           ),
+          Spacer(),
+          button()
         ],
       ),
     );
