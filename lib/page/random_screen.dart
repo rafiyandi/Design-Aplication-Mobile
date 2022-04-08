@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:seven_day/page/menu.dart';
+import 'package:seven_day/page/pricing.dart';
 import 'package:seven_day/theme.dart';
 
 class RandomScreen extends StatelessWidget {
@@ -22,82 +24,76 @@ class RandomScreen extends StatelessWidget {
       );
     }
 
-    Widget contentMenu() {
+    Widget checkoutHarga(subTotal, price) {
       return Container(
-        margin: EdgeInsets.only(top: 30, right: 30),
-        height: 140,
+        margin: EdgeInsets.only(top: 16),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              subTotal,
+              style: GoogleFonts.poppins(
+                fontSize: 16,
+              ),
+            ),
+            Text(
+              price.toString(),
+              style: GoogleFonts.poppins(fontSize: 16, fontWeight: medium),
+            )
+          ],
+        ),
+      );
+    }
+
+    Widget informations() {
+      return Container(
+        margin: EdgeInsets.only(top: 26),
+        width: double.infinity,
+        padding: EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Color(0xffFAFAFA),
+          borderRadius: BorderRadius.circular(8),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Image.asset(
-                  "assets/burger.png",
-                  width: 80,
-                ),
-                SizedBox(
-                  width: 16,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Burger Malleta",
-                      style: GoogleFonts.poppins(
-                          fontSize: 18,
-                          fontWeight: medium,
-                          color: Color(0xff191919)),
-                    ),
-                    Text(
-                      "McTheone",
-                      style: GoogleFonts.poppins(
-                          fontWeight: light, color: Color(0xffA3A8B8)),
-                    ),
-                  ],
-                )
-              ],
+            Text(
+              "Information",
+              style: GoogleFonts.poppins(
+                fontSize: 18,
+                fontWeight: medium,
+                color: Color(0xff191919),
+              ),
             ),
-            SizedBox(
-              height: 13,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 6,
-                ),
-                Image.asset(
-                  "assets/min_icon.png",
-                  width: 22,
-                ),
-                SizedBox(
-                  width: 8,
-                ),
-                Text(
-                  "2",
-                  style: GoogleFonts.poppins(
-                      fontSize: 18,
-                      fontWeight: medium,
-                      color: Color(0xff191919)),
-                ),
-                SizedBox(
-                  width: 8,
-                ),
-                Image.asset(
-                  "assets/plus_icon.png",
-                  width: 22,
-                ),
-                Expanded(
-                  child: Text(
-                    "\$90.0",
-                    style: GoogleFonts.poppins(
-                        fontSize: 16,
-                        fontWeight: semiBold,
-                        color: Color(0xff191919)),
-                  ),
-                ),
-              ],
-            )
+            checkoutHarga("Subtotal", 90.0),
+            checkoutHarga("Delivery", 80.0),
+            checkoutHarga("Total", 170.0),
           ],
+        ),
+      );
+    }
+
+    Widget button() {
+      return Container(
+        margin: EdgeInsets.only(top: 60),
+        height: 60,
+        width: double.infinity,
+        child: TextButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Card()),
+            );
+          },
+          style: TextButton.styleFrom(
+              backgroundColor: Color(0xffFFC532),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(53))),
+          child: Text(
+            "Checkout Now",
+            style: GoogleFonts.poppins(
+                fontSize: 18, fontWeight: semiBold, color: Color(0xff2E221B)),
+          ),
         ),
       );
     }
@@ -106,9 +102,13 @@ class RandomScreen extends StatelessWidget {
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 30),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             header(),
-            contentMenu(),
+            Menu("Burger Malleta", "McTheone", 90.0, "assets/burger.png", 2),
+            Menu("Burger Malleta", "McTheone", 90.0, "assets/burger.png", 5),
+            informations(),
+            button()
           ],
         ),
       ),
